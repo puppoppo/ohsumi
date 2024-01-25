@@ -29,6 +29,8 @@ while (<SWISS>) {
     $readingLine = $_ . " ";
 
     if ( $readingLine =~ /^ID   / ) {
+        $swissID = substr( $readingLine, 5, 12 );
+        $swissID =~ s/\s//g;
     }
     elsif ( $readingLine =~ /^DE/ ) {
         if ( $readingLine =~ /Fragment/ ) {
@@ -39,20 +41,46 @@ while (<SWISS>) {
         $swissoc .= substr( $readingLine, 5, 100 );
     }
     elsif ( $readingLine =~ /^FT   SIGNAL          / ) {
-        $ft_signal = 1;
+        $ft_switch       = 1;
+        $ft_signal       = 1;
+        $ft_signal_range = substr( $readingLine, 21, 100 );
+    }
+    elsif ( $ft_switch == 1 ) {
+        $ft_switch = 0;
+        if ( $readingLine =~ /^FT                   / ) {
+            $ft_eco = substr( $readingLine, 40, 3 );
+        }
+        else {
+            $ft_eco = "0";
+        }
+    }
+    elsif ( $readingLine =~ /^     / ) {
+        $sequence .= substr( $_, 5, 1000 );
     }
     elsif ( $readingLine =~ /^\/\// ) {
-        if ( $swissoc =~ /Homo/ && $frag == 0 && $ft_signal == 1 )
-        {
-            for ( $i = 0 ; $i < @all ; $i++ ) {
-                print WRITE $all[$i] . "\n";
-            }
-        }
-        $frag     = 0;
-        $swissoc  = "";
-        $ft_signal = 0;
-        $j        = 0;
-        @all      = (0);
+        ( $signal_start, $signal_end ) = $ft_signal_range =~ /(\d+)\.\.(\d+)/;
+        $sequence =~ s/\s+//g;
+        @seq_list = split( //, $sequence );
+        print WRITE ">" . $swissID . "," . $ft_eco;
+
+        # for ( $i = $signal_start - 1 ; $i < $signal_end ; $i++ ) {
+        #     printf WRITE $seq_list[$i];
+        # }
+        # printf WRITE "\n";
+
+        $sequence     = "";
+        $swissID      = "";
+        $frag         = 0;
+        $swissoc      = "";
+        $ft_signal    = 0;
+        $j            = 0;
+        @all          = (0);
+        $ft_eco       = "";
+        $ft_switch    = 0;
+        $signal_start = 0;
+        $signal_end   = 0;
+        @seq_list     = (0);
+
     }
 }
 

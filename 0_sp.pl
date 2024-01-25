@@ -42,17 +42,16 @@ while (<SWISS>) {
         $ft_signal = 1;
     }
     elsif ( $readingLine =~ /^\/\// ) {
-        if ( $swissoc =~ /Homo/ && $frag == 0 && $ft_signal == 1 )
-        {
+        if ( $swissoc =~ /Homo/ && $frag == 0 && $ft_signal == 1 ) {
             for ( $i = 0 ; $i < @all ; $i++ ) {
-                print WRITE $all[$i] . "\n";
+                print WRITE $all[$i];
             }
         }
-        $frag     = 0;
-        $swissoc  = "";
+        $frag      = 0;
+        $swissoc   = "";
         $ft_signal = 0;
-        $j        = 0;
-        @all      = (0);
+        $j         = 0;
+        @all       = (0);
     }
 }
 
