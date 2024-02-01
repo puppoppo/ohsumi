@@ -47,21 +47,36 @@ while (<SWISS>) {
     }
     elsif ( $ft_switch == 1 ) {
         $ft_switch = 0;
-        if ( $readingLine =~ /^FT                   / ) {
-            $ft_eco = substr( $readingLine, 40, 3 );
+        if ( $readingLine =~ /^FT                   \/note=/ ) {
+            $note = substr( $readingLine, 27, 100 );
+        }
+        elsif ( $readingLine =~ /^FT                   / ) {
+            $ft_evi = substr( $readingLine, 21, 100 );
         }
         else {
-            $ft_eco = "0";
+            $ft_switch = 0;
         }
     }
     elsif ( $readingLine =~ /^     / ) {
         $sequence .= substr( $_, 5, 1000 );
     }
     elsif ( $readingLine =~ /^\/\// ) {
+        if ( $ft_evi =~ /ECO:(.{7})/ ) {
+            $ft_eco = $1;
+        }
+        else {
+            $ft_eco = 0;
+        }
+
+        $or_frag = 0;
+        if ( $note =~ /Or/ ) {
+            $or_frag = 1;
+        }
+
         ( $signal_start, $signal_end ) = $ft_signal_range =~ /(\d+)\.\.(\d+)/;
         $sequence =~ s/\s+//g;
         @seq_list = split( //, $sequence );
-        print WRITE ">" . $swissID . "," . $ft_eco;
+        print WRITE ">" . $swissID . "," . $ft_eco . "," . $or_frag;
 
         # for ( $i = $signal_start - 1 ; $i < $signal_end ; $i++ ) {
         #     printf WRITE $seq_list[$i];
@@ -75,12 +90,14 @@ while (<SWISS>) {
         $ft_signal    = 0;
         $j            = 0;
         @all          = (0);
+        $ft_evi       = "";
         $ft_eco       = "";
         $ft_switch    = 0;
         $signal_start = 0;
         $signal_end   = 0;
         @seq_list     = (0);
-
+        $note         = "";
+        $or_frag      = 0;
     }
 }
 
