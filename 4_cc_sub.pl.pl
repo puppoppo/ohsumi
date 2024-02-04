@@ -18,7 +18,11 @@ open( WRITE, '>', $output_file_path )
 
 $,   = ",";
 $\   = "\n";
-@all = (0);
+@all = ("");
+
+my @master_array;
+
+my @count_array;
 
 while (<SWISS>) {
     chomp;
@@ -132,17 +136,88 @@ while (<SWISS>) {
         }
 
         if ( $or_frag == 0 && $eco_frag == 1 && $sub_eco != 0 ) {
-            ( $signal_start, $signal_end ) =
-              $ft_signal_range =~ /(\d+)\.\.(\d+)/;
-            $sequence =~ s/\s+//g;
-            @seq_list = split( //, $sequence );
-            print WRITE ">" . $swissID . "," . $ft_eco . "," . $or_frag . ","
-              . $sub_eco;
 
-            for ( $i = $signal_start - 1 ; $i < $signal_end ; $i++ ) {
-                printf WRITE $seq_list[$i];
+            # "Note=" 以降を削除
+            $subcell_note =~ s/Note=.*//;
+
+            # カンマ区切りで配列にする
+            @subcell_list = split( /\./, $subcell_note );
+
+            # " {" と "}" に囲まれた部分を消す
+            foreach my $v (@subcell_list) {
+                $v =~ s/{.*?}//g;
             }
-            printf WRITE "\n";
+
+            # ":"が含まれている場合はそれ以前を消す
+            foreach my $v (@subcell_list) {
+                $v =~ s/.*://;
+            }
+
+            # 最初の1文字がスペースなら、それを削除する
+            foreach my $v (@subcell_list) {
+                $v =~ s/^\s//;
+            }
+
+            # 最後の1文字がスペースなら、それを削除する
+            foreach my $v (@subcell_list) {
+                $v =~ s/\s$//;
+            }
+
+            # 文字列からスペースを削除する
+            foreach my $v (@subcell_list) {
+                $v =~ s/\s//g;
+            }
+
+            # 空文字列を削除する
+            @subcell_list = grep { $_ ne "" } @subcell_list;
+
+            # マスターのリストに一致するものがあるかどうか調べて、なければ最後にappendする
+            foreach my $sub_element (@subcell_list) {
+                if ( grep { $_ eq $sub_element } @master_array ) {
+
+                }
+                else {
+                    push @master_array, $sub_element;
+
+                }
+            }
+
+            # subcell_listの各要素に対して処理
+            foreach my $sub_element (@subcell_list) {
+
+                # 同じ文字列がmaster_arrayに既に格納されている場合
+                if ( grep { $_ eq $sub_element } @master_array ) {
+                    my $index = 0;
+
+                    # 対応する要素のカウントを加算
+                    foreach my $master_element (@master_array) {
+                        if ( $master_element eq $sub_element ) {
+                            $count_array[$index]++;
+                            last;    # 一致したらループを終了
+                        }
+                        $index++;
+                    }
+                }
+                else {
+                    # 同じ文字列がmaster_arrayに格納されていない場合は追加
+                    push @master_array, $sub_element;
+
+                    # カウント配列に新しい要素の初期値1を追加
+                    push @count_array, 1;
+                }
+            }
+
+            # ( $signal_start, $signal_end ) =
+            #   $ft_signal_range =~ /(\d+)\.\.(\d+)/;
+            # $sequence =~ s/\s+//g;
+            # @seq_list = split( //, $sequence );
+            # print WRITE ">" . $swissID . "," . $ft_eco . "," . $or_frag . ","
+            #   . $sub_eco;
+
+            # for ( $i = $signal_start - 1 ; $i < $signal_end ; $i++ ) {
+            #     printf WRITE $seq_list[$i];
+            # }
+            # printf WRITE "\n";
         }
 
         $sequence     = "";
@@ -151,7 +226,7 @@ while (<SWISS>) {
         $swissoc      = "";
         $ft_signal    = 0;
         $j            = 0;
-        @all          = (0);
+        @all          = ("");
         $ft_evi       = "";
         $ft_eco       = "";
         $ft_switch    = 0;
@@ -163,7 +238,14 @@ while (<SWISS>) {
         $subcell_frag = 0;
         $subcell_note = "";
         $sub_eco      = 0;
+        @subcell_list = (0);
     }
 }
 
+my $index = 0;
+
+foreach my $element (@master_array) {
+    print WRITE "$element" . "\t" . $count_array[$index];
+    $index++;
+}
 print chr(7);    #終了時に音が鳴ります

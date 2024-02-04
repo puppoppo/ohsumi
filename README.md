@@ -1,22 +1,37 @@
 # ヒト・sp・完全長のタンパクを集める
 
-ヒト：OC行に"Homo"を含む（もし、ヒトに感染するウイルスを入れたい場合は、OH行を参照する。）
-完全長：DE行に"Fragment"を含む
-sp："FT   SIGNAL"を含む
+- ヒト：OC行に"Homo"を含む（もし、ヒトに感染するウイルスを入れたい場合は、OH行を参照する。）
+- 完全長：DE行に"Fragment"を含む
+- sp："FT   SIGNAL"を含む
 
-0. 0_sp.plでデータセットを作成
+## 0. 0_sp.plでデータセットを作成
 3610個のタンパク質が該当
 
-1. 1_outputWithoutUX.plでシグナル配列に"U","X"を含むものを排除する（なさそう）
+## 1. 1_outputWithoutUX.plでシグナル配列に"U","X"を含むものを排除する（なさそう）
 なかった
 
-2. 2_sig_eco.plでFT SIGNALのECOを集めて数とその割合を調査
+## 2. 2_sig_eco.plでFT SIGNALのECOを集めて数とその割合を調査
 
-3. 3_cc_eco.plでCC   -!- SUBCELLULAR LOCATIONのECOを集めて数とその割合を調査
+## 3. 3_cc_eco.plでCC   -!- SUBCELLULAR LOCATIONのECOを集めて数とその割合を調査
 
-4. 4_cc_sub.plでCC   -!- SUBCELLULAR LOCATIONの記述情報を集めて整理する
+## 4. 4_cc_sub.plでCC   -!- SUBCELLULAR LOCATIONの記述情報を集めて整理する
+- "Note=" 以降を削除
+- カンマ区切りでリストにする
+- " {" と "}" に囲まれた部分を消す
+- リスト0番目の項目に":"が含まれている場合はそれ以前を消す
+- マスターのリストに追加する
+    - マスターのリストに一致するものがあるかどうか調べる
+    - なければ最後にappendする
+- 最後のタンパクまで見たら、マスターのリストをアルファベット順にする
+
+おそらく分泌経路を意識して以下のような並び？
+- ER（Golgi）
+- cell mem
+- Secreted（extracellular matrix）
+
 
 記述例
+```
 CC   -!- SUBCELLULAR LOCATION: Cell membrane {ECO:0000269|PubMed:12970106,
 CC       ECO:0000269|PubMed:18703043, ECO:0000269|PubMed:19057895,
 CC       ECO:0000269|PubMed:7895773}; Multi-pass membrane protein
@@ -115,12 +130,9 @@ CC   -!- SUBCELLULAR LOCATION: Membrane {ECO:0000305}; Single-pass type I
 CC       membrane protein {ECO:0000305}.
 
 CC   -!- SUBCELLULAR LOCATION: Secreted {ECO:0000269|PubMed:8947845}.
+```
 
+## 5. 5_create_dataset.plで局在箇所とsignal配列のfastaファイルを用意する
 
-
-5. 5_create_dataset.plで局在箇所とsignal配列のfastaファイルを用意する
-
-6. 6_analyze.ipynbでグラフ描画
+## 6. 6_analyze.ipynbでグラフ描画
 ・長さと局在の相関
-・疎水性と局在の相関
-
