@@ -123,6 +123,7 @@ while (<SWISS>) {
 
         $eco_frag = 0;
         if (   $ft_eco =~ /0000269/
+            || $ft_eco =~ /0000303/
             || $ft_eco =~ /0000305/
             || $ft_eco =~ /0000250/
             || $ft_eco =~ /0007744/ )
@@ -130,17 +131,18 @@ while (<SWISS>) {
             $eco_frag = 1;
         }
 
-        if ( $or_frag == 0 && $eco_frag == 1 ) {
+        if ( $or_frag == 0 && $eco_frag == 1 && $sub_eco != 0 ) {
             ( $signal_start, $signal_end ) =
               $ft_signal_range =~ /(\d+)\.\.(\d+)/;
             $sequence =~ s/\s+//g;
             @seq_list = split( //, $sequence );
-            print WRITE ">" . $swissID . "," . $ft_eco . ",";
+            print WRITE ">" . $swissID . "," . $ft_eco . "," . $or_frag . ","
+              . $sub_eco;
 
-            for ( $i = $signal_start - 1 ; $i < $signal_end ; $i++ ) {
-                printf WRITE $seq_list[$i];
-            }
-            printf WRITE "\n";
+            # for ( $i = $signal_start - 1 ; $i < $signal_end ; $i++ ) {
+            #     printf WRITE $seq_list[$i];
+            # }
+            # printf WRITE "\n";
         }
 
         $sequence     = "";
@@ -158,6 +160,9 @@ while (<SWISS>) {
         @seq_list     = (0);
         $note         = "";
         $or_frag      = 0;
+        $subcell_frag = 0;
+        $subcell_note = "";
+        $sub_eco      = 0;
     }
 }
 
