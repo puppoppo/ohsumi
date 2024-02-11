@@ -136,7 +136,10 @@ CC   -!- SUBCELLULAR LOCATION: Secreted {ECO:0000269|PubMed:8947845}.
 
 ## 5. 5_cc_dat.plで有効な取得条件のうち、CC行、FT行のみを出力したdatファイルを用意する
 
-## 6. 6_dat_to_fasta.plでfastaファイル作成
+## 6. 6_filtered2_dat.plで取得条件2までを満たすタンパクのdatファイルを作成
+
+
+## 7. 7_dat_to_fasta.plでfastaファイル作成
 ID行：">",ID名 "\t" DE一行目 "\t" CC sub中身 "\t" FT transmem行の数
 配列行；signal配列
 
