@@ -140,7 +140,7 @@ while (<SWISS>) {
         {
 
             foreach my $element (@all) {
-                printf WRITE $element;
+                print WRITE $element;
             }
         }
 
