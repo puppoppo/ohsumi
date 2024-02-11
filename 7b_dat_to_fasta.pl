@@ -31,8 +31,9 @@ while (<SWISS>) {
         $swissID = substr( $append_line, 5, 12 );
         $swissID =~ s/\s//g;
     }
-    elsif ( $append_line =~ /^DE/ ) {
-        $swissDE =~ substr( $append_line, 5, 1000 );
+    elsif ( $append_line =~ /^DE/ && $DE_frag == 0 ) {
+        $swissDE = substr( $append_line, 5, 1000 );
+        $DE_frag = 1;
     }
     elsif ( $append_line =~ /^CC   -!- SUBCELLULAR LOCATION:/ ) {
         $subcell_frag = 1;
@@ -68,8 +69,8 @@ while (<SWISS>) {
         print WRITE ">"
           . $swissID . "\t"
           . $swissDE . "\t"
-          . $subcell_note . "\t"
-          . $ft_transmem_count;
+          . $ft_transmem_count . "\t"
+          . $subcell_note;
 
         for ( $i = $signal_start - 1 ; $i < $signal_end ; $i++ ) {
             printf WRITE $seq_list[$i];
@@ -78,12 +79,14 @@ while (<SWISS>) {
 
         $sequence          = "";
         $swissID           = "";
+        $swissDE           = "";
         $ft_transmem_count = 0;
         $subcell_frag      = 0;
         $subcell_note      = "";
         $ft_signal_range   = "";
         $signal_start      = 0;
         $signal_end        = 0;
+        $DE_frag           = 0;
     }
 }
 

@@ -148,9 +148,10 @@ ID行：">",ID名 "\t" DE一行目 "\t" CC sub中身 "\t" FT transmem行の数
 ID行：">",ID名 "\t" DE一行目 "\t" CC sub中身 "\t" FT transmem行の数
 配列行；signal配列
 
+## 8. CD-HIT
+Linux環境にて下記URL手順からコンパイルして実行
+https://bi.biopapyrus.jp/seq/alignment/software/cd-hit.html
 
-
-## . CD-HIT
 ID行：">",ID名,"\t",DE一行目,CC sub中身,FT transmem行の数
 配列行；signal配列
 
