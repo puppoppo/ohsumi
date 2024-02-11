@@ -16,21 +16,21 @@ open( SWISS, $input_file_path )
 open( WRITE, '>', $output_file_path )
   or die "Cannot open output file: $!";
 
-$,   = ",";
-$\   = "\n";
-@all = (0);
+$, = ",";
+$\ = "\n";
+my @all;
 
 while (<SWISS>) {
     chomp;
 
-    $all[$j] = substr( $_, 0, 1000 );
-    $j += 1;
+    $append_line = substr( $_, 0, 1000 );
 
     $readingLine = $_ . " ";
 
     if ( $readingLine =~ /^ID   / ) {
         $swissID = substr( $readingLine, 5, 12 );
         $swissID =~ s/\s//g;
+        push @all, $append_line;
     }
     elsif ( $readingLine =~ /^DE/ ) {
         if ( $readingLine =~ /Fragment/ ) {
@@ -38,6 +38,7 @@ while (<SWISS>) {
         }
     }
     elsif ( $readingLine =~ /^CC   -!- SUBCELLULAR LOCATION:/ ) {
+        push @all, $append_line;
         $subcell_frag = 1;
 
         #　$subcell_noteに格納
@@ -47,6 +48,7 @@ while (<SWISS>) {
         $subcell_frag = 0;
     }
     elsif ( $subcell_frag == 1 && $readingLine =~ /^CC       / ) {
+        push @all, $append_line;
 
         #　$subcell_noteに格納
         $subcell_note .= substr( $readingLine, 9, 100 );
@@ -55,6 +57,7 @@ while (<SWISS>) {
         $swissoc .= substr( $readingLine, 5, 100 );
     }
     elsif ( $readingLine =~ /^FT   SIGNAL          / ) {
+        push @all, $append_line;
         $ft_switch       = 1;
         $ft_signal       = 1;
         $ft_signal_range = substr( $readingLine, 21, 100 );
@@ -62,16 +65,22 @@ while (<SWISS>) {
     elsif ( $ft_switch == 1 ) {
         $ft_switch = 0;
         if ( $readingLine =~ /^FT                   \/note=/ ) {
+            push @all, $append_line;
             $note = substr( $readingLine, 27, 100 );
         }
         elsif ( $readingLine =~ /^FT                   / ) {
+            push @all, $append_line;
             $ft_evi = substr( $readingLine, 21, 100 );
         }
         else {
             $ft_switch = 0;
         }
     }
+    elsif ( $readingLine =~ /^SQ   / ) {
+        push @all, $append_line;
+    }
     elsif ( $readingLine =~ /^     / ) {
+        push @all, $append_line;
         $sequence .= substr( $_, 5, 1000 );
     }
     elsif ( $readingLine =~ /^\/\// ) {
@@ -140,13 +149,18 @@ while (<SWISS>) {
               $ft_signal_range =~ /(\d+)\.\.(\d+)/;
             $sequence =~ s/\s+//g;
             @seq_list = split( //, $sequence );
-            print WRITE ">" . $swissID . "," . $ft_eco . "," . $or_frag . ","
-              . $sub_eco;
 
-            for ( $i = $signal_start - 1 ; $i < $signal_end ; $i++ ) {
-                printf WRITE $seq_list[$i];
+            foreach my $element (@all) {
+                if ( $element =~ /^SQ   / ) {
+                    printf WRITE "FT                   ";
+                    for ( $i = $signal_start - 1 ; $i < $signal_end ; $i++ ) {
+                        printf WRITE $seq_list[$i];
+                    }
+                    printf WRITE "\n";
+                }
+                print WRITE $element;
             }
-            printf WRITE "\n";
+            printf WRITE "\/\/";
         }
 
         $sequence     = "";
@@ -154,8 +168,7 @@ while (<SWISS>) {
         $frag         = 0;
         $swissoc      = "";
         $ft_signal    = 0;
-        $j            = 0;
-        @all          = (0);
+        @all          = ("\n");
         $ft_evi       = "";
         $ft_eco       = "";
         $ft_switch    = 0;

@@ -1,0 +1,210 @@
+
+Apical cell membrane
+Apical cell membrane ; Lipid-anchor, GPI-anchor
+Apical cell membrane ; Multi-pass membrane protein
+Apical cell membrane ; Peripheral membrane protein ; Extracellular side
+Apical cell membrane ; Single-pass type I membrane protein
+Autolysosome membrane
+Autolysosome membrane ; Single-pass type I membrane protein
+Basolateral cell membrane
+Basolateral cell membrane ; Single-pass type I membrane protein
+Cell junction
+Cell junction, adherens junction
+Cell junction, desmosome
+Cell junction, focal adhesion
+Cell junction, gap junction
+Cell junction, tight junction
+Cell membrane
+Cell membrane ; Lipid- anchor
+Cell membrane ; Lipid- anchor, GPI-anchor
+Cell membrane ; Lipid-anchor
+Cell membrane ; Lipid-anchor, GPI- anchor
+Cell membrane ; Lipid-anchor, GPI-anchor
+Cell membrane ; Lipid-anchor, GPI-anchor ; Extracellular side
+Cell membrane ; Multi-pass membrane protein
+Cell membrane ; Peripheral membrane protein
+Cell membrane ; Peripheral membrane protein ; Extracellular side
+Cell membrane ; Single- pass membrane protein
+Cell membrane ; Single- pass type I membrane protein
+Cell membrane ; Single-pass membrane protein
+Cell membrane ; Single-pass type I membrane protein
+Cell membrane ; Single-pass type I membrane protein ; Extracellular side
+Cell membrane, sarcolemma ; Single-pass type I membrane protein
+Cell membrane, sarcolemma, T-tubule
+Cell membrane; Lipid-anchor, GPI- anchor
+Cell membrane; Lipid-anchor, GPI-anchor
+Cell membrane; Single-pass type I membrane protein
+Cell membrane; Single-pass type I membrane protein; Extracellular side
+Cell projection
+Cell projection, axon
+Cell projection, cilium
+Cell projection, cilium, photoreceptor outer segment
+Cell projection, dendrite
+Cell projection, filopodium membrane ; Single- pass type I membrane protein
+Cell projection, filopodium membrane ; Single-pass type I membrane protein
+Cell projection, growth cone
+Cell projection, invadopodium
+Cell projection, invadopodium membrane
+Cell projection, invadopodium membrane ; Single-pass type I membrane protein
+Cell projection, lamellipodium
+Cell projection, lamellipodium membrane ; Multi-pass membrane protein
+Cell projection, lamellipodium membrane ; Single-pass type I membrane protein
+Cell projection, microvillus
+Cell projection, microvillus membrane ; Lipid-anchor, GPI-anchor
+Cell projection, microvillus membrane ; Single- pass type I membrane protein
+Cell projection, microvillus membrane ; Single-pass type I membrane protein
+Cell projection, neuron projection
+Cell projection, ruffle
+Cell projection, ruffle membrane ; Single-pass type I membrane protein
+Cell projection, uropodium
+Cell surface
+Cytolytic granule
+Cytolytic granule membrane ; Single-pass type I membrane protein
+Cytoplasm
+Cytoplasm, cytoskeleton
+Cytoplasm, cytosol
+Cytoplasm, perinuclear region
+Cytoplasmic granule
+Cytoplasmic granule lumen
+Cytoplasmic granule membrane
+Cytoplasmic granule membrane ; Peripheral membrane protein ; Cytoplasmic side
+Cytoplasmic vesicle
+Cytoplasmic vesicle lumen
+Cytoplasmic vesicle membrane
+Cytoplasmic vesicle, autophagosome membrane
+Cytoplasmic vesicle, phagosome membrane ; Single-pass type I membrane protein
+Cytoplasmic vesicle, secretory vesicle
+Cytoplasmic vesicle, secretory vesicle lumen
+Cytoplasmic vesicle, secretory vesicle membrane ; Single-pass membrane protein
+Cytoplasmic vesicle, secretory vesicle membrane ; Single-pass type I membrane protein
+Cytoplasmic vesicle, secretory vesicle, Cortical granule
+Cytoplasmic vesicle, secretory vesicle, acrosome
+Cytoplasmic vesicle, secretory vesicle, acrosome inner membrane ; Single-pass type I membrane protein
+Cytoplasmic vesicle, secretory vesicle, chromaffin granule
+Cytoplasmic vesicle, secretory vesicle, microneme membrane ; Multi-pass membrane protein
+Cytoplasmic vesicle, secretory vesicle, neuronal dense core vesicle
+Cytoplasmic vesicle, secretory vesicle, synaptic vesicle
+Early endosome
+Early endosome membrane
+Early endosome membrane ; Single-pass membrane protein
+Early endosome membrane ; Single-pass type I membrane protein
+Endomembrane system ; Single-pass type I membrane protein
+Endoplasmic reticulum
+Endoplasmic reticulum lumen
+Endoplasmic reticulum membrane
+Endoplasmic reticulum membrane ; Multi-pass membrane protein
+Endoplasmic reticulum membrane ; Multi-pass membrane protein ; Lumenal side
+Endoplasmic reticulum membrane ; Peripheral membrane protein ; Lumenal side
+Endoplasmic reticulum membrane ; Single- pass type I membrane protein
+Endoplasmic reticulum membrane ; Single-pass membrane protein
+Endoplasmic reticulum membrane ; Single-pass type I membrane protein
+Endoplasmic reticulum membrane; Multi- pass membrane protein
+Endoplasmic reticulum membrane; Single-pass type I membrane protein
+Endoplasmic reticulum- Golgi intermediate compartment
+Endoplasmic reticulum-Golgi intermediate compartment
+Endoplasmic reticulum-Golgi intermediate compartment membrane ; Single-pass type I membrane protein
+Endoplasmic reticulum-Golgi intermediate compartment membrane; Single-pass type I membrane protein
+Endosome
+Endosome lumen
+Endosome membrane
+Endosome membrane ; Multi-pass membrane protein
+Endosome membrane ; Single- pass type I membrane protein
+Endosome membrane ; Single-pass type I membrane protein
+Endosome, multivesicular body
+Endosome, multivesicular body membrane ; Single-pass type I membrane protein
+Extracellular vesicle
+Extracellular vesicle membrane ; Lipid- anchor, GPI-anchor
+Golgi apparatus
+Golgi apparatus lumen
+Golgi apparatus membrane
+Golgi apparatus membrane ; Multi-pass membrane protein
+Golgi apparatus membrane ; Single-pass type I membrane protein
+Golgi apparatus membrane; Single-pass type I membrane protein
+Golgi apparatus, Golgi stack membrane ; Single-pass type I membrane protein
+Golgi apparatus, cis-Golgi network
+Golgi apparatus, cis-Golgi network membrane ; Peripheral membrane protein ; Lumenal side
+Golgi apparatus, cis-Golgi network membrane ; Single-pass type I membrane protein
+Golgi apparatus, cis-Golgi network membrane; Single-pass type I membrane protein
+Golgi apparatus, trans- Golgi network membrane ; Single-pass type I membrane protein
+Golgi apparatus, trans-Golgi network
+Golgi apparatus, trans-Golgi network membrane ; Single- pass type I membrane protein
+Golgi apparatus, trans-Golgi network membrane ; Single-pass type I membrane protein
+Late endosome
+Late endosome membrane ; Multi-pass membrane protein
+Late endosome membrane ; Single-pass type I membrane protein
+Lipid droplet
+Lysosome
+Lysosome lumen
+Lysosome membrane ; Multi- pass membrane protein
+Lysosome membrane ; Multi-pass membrane protein
+Lysosome membrane ; Peripheral membrane protein ; Lumenal side
+Lysosome membrane ; Single-pass membrane protein
+Lysosome membrane ; Single-pass type I membrane protein
+Lysosome membrane; Peripheral membrane protein
+Lysosome membrane; Peripheral membrane protein; Lumenal side
+Melanosome
+Melanosome membrane ; Multi-pass membrane protein
+Membrane
+Membrane ; Multi- pass membrane protein
+Membrane ; Multi-pass membrane protein
+Membrane ; Multi-pass membrane protein ; Lumenal side
+Membrane ; Peripheral membrane protein
+Membrane ; Single- pass type I membrane protein
+Membrane ; Single-pass membrane protein
+Membrane ; Single-pass type I membrane protein
+Membrane raft
+Membrane raft ; Lipid-anchor, GPI-anchor
+Membrane raft ; Lipid-anchor, GPI-like-anchor
+Membrane raft ; Multi-pass membrane protein
+Membrane raft ; Single-pass type I membrane protein
+Membrane, caveola
+Membrane, clathrin-coated pit
+Membrane, coated pit
+Membrane; Multi-pass membrane protein
+Membrane; Single-pass type I membrane protein
+Microsome membrane
+Microsome membrane ; Lipid-anchor, GPI-anchor
+Microsome membrane ; Single-pass membrane protein
+Microsome membrane ; Single-pass type I membrane protein
+Mitochondrion
+Mitochondrion inner membrane
+Mitochondrion inner membrane ; Peripheral membrane protein
+Mitochondrion intermembrane space
+Mitochondrion membrane ; Lipid-anchor, GPI-anchor
+Mitochondrion membrane ; Single-pass type I membrane protein
+Mitochondrion outer membrane
+Mitochondrion outer membrane ; Peripheral membrane protein
+Nucleus
+Nucleus envelope
+Nucleus membrane
+Nucleus membrane ; Peripheral membrane protein
+Nucleus membrane ; Single-pass type I membrane protein
+Nucleus membrane; Single-pass type I membrane protein
+Nucleus, nuclear pore complex
+Nucleus, nucleolus
+Parasitophorous vacuole
+Perikaryon
+Photoreceptor outer segment membrane ; Single-pass type I membrane protein
+Postsynaptic cell membrane ; Multi-pass membrane protein
+Postsynaptic cell membrane ; Single-pass type I membrane protein
+Postsynaptic cell membrane; Multi-pass membrane protein
+Presynaptic cell membrane
+Presynaptic cell membrane ; Single- pass type I membrane protein
+Presynaptic cell membrane ; Single-pass type I membrane protein
+Rough endoplasmic reticulum
+Sarcoplasmic reticulum lumen
+Secreted
+Secreted, extracellular exosome
+Secreted, extracellular space
+Secreted, extracellular space, extracellular matrix
+Secreted, extracellular space, extracellular matrix, basement membrane
+Secreted, extracellular space, extracellular matrix, interphotoreceptor matrix
+Synapse
+Synapse, synaptosome
+Target cell membrane ; Multi-pass membrane protein
+Virion
+Zona pellucida
+Zymogen granule
+Zymogen granule lumen
+Zymogen granule membrane ; Lipid-anchor, GPI-anchor
+Zymogen granule membrane ; Peripheral membrane protein ; Lumenal side

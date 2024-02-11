@@ -18,11 +18,13 @@
 - "Note=" 以降を削除
 - カンマ区切りでリストにする
 - " {" と "}" に囲まれた部分を消す
-- リスト0番目の項目に":"が含まれている場合はそれ以前を消す
+- ":"が含まれている場合はそれ以前を消す
+- 文字列からスペースを削除する
 - マスターのリストに追加する
     - マスターのリストに一致するものがあるかどうか調べる
-    - なければ最後にappendする
-- 最後のタンパクまで見たら、マスターのリストをアルファベット順にする
+    - あればcount_arrayの対応する要素を1加算する
+    - なければ最後にappendして、count_arrayに1をappend
+- tsvで出力してスプレッドシートでアルファベット順に表示
 
 おそらく分泌経路を意識して以下のような並び？
 - ER（Golgi）
@@ -132,7 +134,21 @@ CC       membrane protein {ECO:0000305}.
 CC   -!- SUBCELLULAR LOCATION: Secreted {ECO:0000269|PubMed:8947845}.
 ```
 
-## 5. 5_create_dataset.plで局在箇所とsignal配列のfastaファイルを用意する
+## 5. 5_cc_dat.plで有効な取得条件のうち、CC行、FT行のみを出力したdatファイルを用意する
 
-## 6. 6_analyze.ipynbでグラフ描画
+## 6. 6_dat_to_fasta.plでfastaファイル作成
+ID行：">",ID名 "\t" DE一行目 "\t" CC sub中身 "\t" FT transmem行の数
+配列行；signal配列
+
+ID行：">",ID名 "\t" DE一行目 "\t" CC sub中身 "\t" FT transmem行の数
+配列行；完全長
+
+## . CD-HIT
+ID行：">",ID名,"\t",DE一行目,CC sub中身,FT transmem行の数
+配列行；signal配列
+
+ID行：">",ID名,"\t",DE一行目,CC sub中身,FT transmem行の数
+配列行；完全長
+
+## 6. analyze.ipynbでグラフ描画
 ・長さと局在の相関

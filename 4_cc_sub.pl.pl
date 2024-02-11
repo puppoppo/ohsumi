@@ -135,7 +135,11 @@ while (<SWISS>) {
             $eco_frag = 1;
         }
 
-        if ( $or_frag == 0 && $eco_frag == 1 && $sub_eco != 0 ) {
+        if (   $or_frag == 0
+            && $eco_frag == 1
+            && $sub_eco != 0
+            && $sub_eco != 255 )
+        {
 
             # "Note=" 以降を削除
             $subcell_note =~ s/Note=.*//;
@@ -170,17 +174,6 @@ while (<SWISS>) {
 
             # 空文字列を削除する
             @subcell_list = grep { $_ ne "" } @subcell_list;
-
-            # マスターのリストに一致するものがあるかどうか調べて、なければ最後にappendする
-            foreach my $sub_element (@subcell_list) {
-                if ( grep { $_ eq $sub_element } @master_array ) {
-
-                }
-                else {
-                    push @master_array, $sub_element;
-
-                }
-            }
 
             # subcell_listの各要素に対して処理
             foreach my $sub_element (@subcell_list) {
